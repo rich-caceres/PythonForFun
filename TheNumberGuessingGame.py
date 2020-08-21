@@ -1,7 +1,8 @@
 import random
 
-#FOR TESTING randomNum = 100
-randomNum = random.randrange(-100, 101)
+#FOR TESTING
+randomNum = 100
+#randomNum = random.randrange(-100, 101)
 userName= input('Please enter your name:\n')
 
 def numberSelectionGame(randomNum, userName):
@@ -23,5 +24,5 @@ def numberSelectionGame(randomNum, userName):
     #FOR TESTING print(userGuess)
 
 numberSelectionGame(randomNum, userName)
-#FOR TESTING print(randomNum)
+print('The number that was generated is ' + str(randomNum) + ' thanks for playing ' + userName)
 #FOR TESTING print(userName)
