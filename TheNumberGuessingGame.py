@@ -1,8 +1,7 @@
 import random
 
-#FOR TESTING
-randomNum = -100
-#randomNum = random.randrange(-100, 101)
+#FOR TESTING randomNum = 100
+randomNum = random.randrange(-100, 101)
 userName= input('Please enter your name:\n')
 
 def numberSelectionGame(randomNum, userName):
@@ -25,10 +24,14 @@ def numberSelectionGame(randomNum, userName):
             elif int(userGuess)< 0 and randomNum > 0:
                 print('The random number is a positive number.')
                 
-            if int(userGuess) == randomNum-10 and randomNum > 0:
-                print('Your guess is close and the secret number is positive.')
-            elif int(userGuess) == randomNum+10 and randomNum < 0:
-                print('Your guess is close and the secret number is negative.')
+            for x in range(randomNum-10, randomNum-5):    
+                if int(userGuess) == x or int(userGuess) == x:
+                    print('Your guess is close to the secret number.')
+            for x in range(randomNum-5, randomNum+1):
+                if int(userGuess) == x or int(userGuess) == x:
+                    print('Your guess is very close to the secret number.')
+
+            
                 
             userGuess = input('you guessed '+ userGuess + ' which is incorrect.\nYou have ' + str(7 - guesses) + ' left.\n Please guess again:\n')
             if guesses == 7:
