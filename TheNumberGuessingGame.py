@@ -6,6 +6,7 @@ import random
 randomNum = random.randrange(-100, 101)
 #Gets user name
 userName= input('Please enter your name:\n')
+playAgain = True
 
 def numberSelectionGame(randomNum, userName):
     guesses= 0;
@@ -46,6 +47,11 @@ def numberSelectionGame(randomNum, userName):
             
     #FOR TESTING print(userGuess)
 
-numberSelectionGame(randomNum, userName)
+while playAgain == True:
+    answer = input('Would you like to play the Number Guessing Game? y/n')
+    if answer == 'n':
+        playAgain = False
+    else:
+        numberSelectionGame(randomNum, userName)
 
 #FOR TESTING print(userName)
