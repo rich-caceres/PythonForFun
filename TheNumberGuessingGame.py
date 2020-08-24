@@ -25,19 +25,21 @@ def numberSelectionGame(randomNum, userName):
         else:
 
             #Hint generation begins here
+            #Next 4 lines generate a hint relatin to the types of number it is
             if int(userGuess)> 0 and randomNum < 0:
                 print('The random number is a negative number.')
             elif int(userGuess)< 0 and randomNum > 0:
                 print('The random number is a positive number.')
 
-            #Next 6 lines generate the hint close hint as long as the user is within the range
+            #Next 6 lines generate the hint "close hint" as long as the user is within the range
             for x in range(randomNum-10, randomNum-5):    
                 if int(userGuess) == x or int(userGuess) == x:
                     print('Your guess is close to the secret number.')
             for x in range(randomNum-5, randomNum+1):
                 if int(userGuess) == x or int(userGuess) == x:
                     print('Your guess is very close to the secret number.')
-                
+
+            #Shows what the user guessed and returns number of guesses the user has left
             userGuess = input('you guessed '+ userGuess + ' which is incorrect.\nYou have ' + str(7 - guesses) + ' left.\n Please guess again:\n')
             if guesses == 7:
                 print('The number that was generated is ' + str(randomNum) + '. Thanks for playing ' + userName)
