@@ -67,4 +67,4 @@ while True:
     if answer == 'q':
         break
 
-    print('This is your current score\nWins:', win,'\nLosses:', loss, '\nDraws: ', draw)
+    print(name,', this is your current score\nWins:', win,'\nLosses:', loss, '\nDraws: ', draw)
