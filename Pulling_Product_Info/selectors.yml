@@ -1,0 +1,17 @@
+Name:
+    css: 'h1#productTitle span'
+    xpath: null
+    type: Text
+Picture:
+    css: div.mousetrap
+    xpath: null
+    type: Image
+Description:
+    css: div.text
+    xpath: null
+    type: Text
+Features:
+    css: 'div.details li'
+    xpath: null
+    multiple: true
+    type: Text
