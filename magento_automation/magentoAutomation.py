@@ -111,6 +111,9 @@ def AddNewProduct(cells, completed, row, columns, orientation):
 
         products = returnCellVal(cells['cell1'], cells['cell2'], worksheet)
 
+        #enters all data basic data.
+        #some of this data will need to be reviewed once populated
+        #meant to make it easier for the user to transfer data from the excel sheet
         element = driver.find_element_by_name('product[sku]')
         element.send_keys(products['sku'])
         element = driver.find_element_by_name('product[name]')
@@ -119,6 +122,8 @@ def AddNewProduct(cells, completed, row, columns, orientation):
         element.send_keys('0.00')
         element = driver.find_element_by_name('product[uom]')
         element.send_keys('EA')
+        element = driver.find_element_by_name('product[weight]')
+        element.send_keys('1')
 
         wait = input('Would you like to save this product?\n')
 
