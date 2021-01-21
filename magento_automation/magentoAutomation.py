@@ -150,7 +150,6 @@ if __name__ == '__main__':
     
     login("http://starsales.patracompany.com/admin_1b7unb/admin/index/index/key/c6a9c4978139a87c7b4119e779ddd95bc0bc2b10b3df7e8ba920db39048eaffb/", "username", user, "login", magPassword,"action-login")
     answer = input('Would you like to start entering data? y/n \n')
-    orientation = input('Do you want to reverse count? y/n \n')
     
     if answer.lower() == 'y':
         orientation = input('Do you want to reverse count? y/n \n')
