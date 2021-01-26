@@ -8,9 +8,11 @@ def GetWorkBooks():
 
     workbook2 = openpyxl.load_workbook('ExcelFiles/' + input('Enter name of second excel file:\n') + '.xlsx')
     worksheet2 = workbook[input('Enter name of second worksheet\n')]
+    
     for row1 in range(2, worksheet1.max_row+1):
             sku1 = worksheet1['C' + str(row1)].value
-            for row2 in range(2, worksheet2.max_row+1):    
+            for row2 in range(2, worksheet2.max_row+1):
+                #TODO: have to strip SKU2 of initial B&D set by star sales
                 sku2 = worksheet2['C' + str(row2)].value
                 if(sku1 == sku2):
                     #TODO: get the entire row that matches
