@@ -13,11 +13,15 @@ def GetWorkBooks():
             for row2 in range(2, worksheet2.max_row+1):    
                 sku2 = worksheet2['C' + str(row2)].value
                 if(sku1 == sku2):
+                    #TODO: get the entire row that matches
+                    #TODO: send the row to addtoworkbook method below
                     #AddtoWorkBook(row1)
                 break
 
 def AddtoWorkbook(wsRow):
     #TODO: create a new workbook so the program can use the cells
+    #TODO: add the row to the new workbook
+    #TODO: see the data being added to the workbook
 
 if __name__ == '__main__':
 
