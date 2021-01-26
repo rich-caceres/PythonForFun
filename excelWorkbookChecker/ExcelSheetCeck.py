@@ -30,13 +30,6 @@ def GetWorkBooks():
                         
     newWorkbook.save('temp.xlsx')
             
-                    
-
-#def AddtoWorkbook(wsRow, newWorkbook):
-    
-    #TODO: create a new workbook so the program can use the cells
-    #TODO: add the row to the new workbook
-    #TODO: see the data being added to the workbook
 
 if __name__ == '__main__':
 
