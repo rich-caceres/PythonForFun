@@ -5,8 +5,10 @@ from openpyxl import load_workbook
 
 def GetWorkBooks():
     #creates new workbook to save rows in
+    newWorkbook1 = openpyxl.Workbook()
     newWorkbook = openpyxl.Workbook()
-    ws= newWorkbook.active
+    ws1 = newWorkbook1.active 
+    ws = newWorkbook.active
 
     #gets the first workbook that will be analyzed
     workbook1 = openpyxl.load_workbook( 'ExcelFiles/' + input('Enter name of first excel file:\n')+ '.xlsx')
@@ -29,6 +31,10 @@ def GetWorkBooks():
                 if(sku1 == sku2):
                     print(sku1 + " " + sku2 + " are the same. Starting the data entry process.")
 
+                    for nCol1 in range(1, worksheet1.max_column +1 ):
+                        rowData = worksheet1.cell(row = row1, column = nCol1)
+                        ws1.cell(row = rowNum, column = nCol1).value = rowData.value
+                    
                     #loop to get all the values from the columns
                     for nCol in range(1, worksheet2.max_column + 1): 
                         rowData= worksheet2.cell(row= row2, column= nCol)
@@ -38,7 +44,7 @@ def GetWorkBooks():
 
     #saves the workbook once we drop out of all the loops                    
     newWorkbook.save('temp.xlsx')
-            
+    newWorkbook1.save('temp1.xlsx')        
 
 if __name__ == '__main__':
 
