@@ -4,7 +4,7 @@ import re
 
 def OpenWorkbook():
     #opens the workbook
-    toConvertWb = openpyxl.load_workbook(input('enter the name of workbook\n') + '.xlsx')
+    toConvertWb = openpyxl.load_workbook('Backup/ExcelSheets/' + input('enter the name of workbook\n') + '.xlsx')
     toConvertWs = toConvertWb[input('Enter name of the worksheet to open:\n')]
 
     useOfScript = input('Would you like to (1)convert for import or (2) replace skus? type 1 or 2 respectively\n')
@@ -12,7 +12,7 @@ def OpenWorkbook():
     #if user wants to convert for import
     if int(useOfScript) == 1:
         #opens the base file used for import in Magento
-        importWb = openpyxl.load_workbook('catalog_product.xlsx')
+        importWb = openpyxl.load_workbook('Backup/ExcelSheets/catalog_product.xlsx')
         importWs = importWb['catalog_product']
         
         #loops throughout the entire workbook to get the correct information
@@ -49,7 +49,7 @@ def OpenWorkbook():
                     ConvertToImport(sku, productOnline, itemName, weight, picture, importWs)
     #if user wants to replace sku's
     elif int(useOfScript) == 2:
-        wbToUse = openpyxl.load_workbook(input('enter the name of workbook:\n') + '.xlsx')
+        wbToUse = openpyxl.load_workbook('Backup/ExcelSheets/' + input('enter the name of workbook:\n') + '.xlsx')
         wsToUse =  wbToUse[input('Enter name of the worksheet to open:\n')]
         wsToUse = ReplaceSku(toConvertWs, wsToUse)
         wbToUse.save('ConvertedFile.xlsx')
