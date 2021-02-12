@@ -16,10 +16,12 @@ for row1 in range(2, toImportWs.max_row):
     url = toImportWs['O' + str(row1)].value
 
     #TODO: get Picture and save it as whatever name it is
+    #TODO: picture name will be derived from source name
     
     #TODO: Add feature to import pictures from source
     for nCol in range(15, 20):
-        
+        #TODO: add pictureName
+        toImportWs.cell(row = row1, column = nCol) = pictureName
     
     for row2 in range(2, fromMagentoWs.max_row + 1):
         sku2 = fromMagentoWs['A' + str(row2)].value
