@@ -12,6 +12,8 @@ for row1 in range(2, toImportWs.max_row):
     sku1 = toImportWs['A' + str(row1)].value
     print(sku1)
     toImportWs['N' + str(row1)].value = '0'
+
+    #TODO: Add feature to import pictures from source
     for row2 in range(2, fromMagentoWs.max_row + 1):
         sku2 = fromMagentoWs['A' + str(row2)].value
         if(sku1 == sku2):
