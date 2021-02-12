@@ -13,7 +13,14 @@ for row1 in range(2, toImportWs.max_row):
     print(sku1)
     toImportWs['N' + str(row1)].value = '0'
 
+    url = toImportWs['O' + str(row1)].value
+
+    #TODO: get Picture and save it as whatever name it is
+    
     #TODO: Add feature to import pictures from source
+    for nCol in range(15, 20):
+        
+    
     for row2 in range(2, fromMagentoWs.max_row + 1):
         sku2 = fromMagentoWs['A' + str(row2)].value
         if(sku1 == sku2):
