@@ -14,6 +14,8 @@ def CheckMapp(Worksheet1, Worksheet2):
     startRowMapp = input('Enter the starting row for Mapp Sheet:\n')
     colWithMapp = input('Enter column letter with MAPP:\n')
     colWithMsrp = input('Enter column letter with MSRP:\n')
+    startDate = input('Enter start date of MAPP:\n')
+    endDate = input('Enter end date of MAPP:\n')
 
     for row1 in range(2, Worksheet1.max_row):
         sku1 = Worksheet1['A' + str(row1)].value
@@ -29,7 +31,9 @@ def CheckMapp(Worksheet1, Worksheet2):
                 msrp = Worksheet2[colWithMsrp + str(row2)].value
                 Worksheet1['E' + str(row1)].value = msrp
                 Worksheet1['F' + str(row1)].value = mapp
-                break
+                Worksheet1['G' + str(row1)].value = startDate
+                Worksheet1['H' + str(row1)].value = endDate
+    return Worksheet1
 
 if __name__ == "__main__":
 
@@ -40,4 +44,6 @@ if __name__ == "__main__":
     Worksheet2 = Workbook2[input('Enter the name of the worksheet with MAPP pricing:\n')]
 
 
-    CheckMapp(Worksheet1, Worksheet2)
+    Worksheet1 = CheckMapp(Worksheet1, Worksheet2)
+
+    Workbook1.save('import.xlsx')
