@@ -1,8 +1,10 @@
 class ExcelSheet:
     
-    def __init__(self, sheet_name):
+    def __init__(self, sheet_name, manu_ident, starting_row):
         try:
             self.sheet_name = sheet_name
+            self.manu_ident = manu_ident
+            self.starting_row = starting_row
         except:
             print("An error ocurred")
 
