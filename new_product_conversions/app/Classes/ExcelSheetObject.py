@@ -4,7 +4,7 @@ class ExcelSheet:
         try:
             self.sheet_name = sheet_name + '.xlsx'
             self.manu_ident = manu_ident
-            self.starting_row = starting_row
+            self.starting_row = int(starting_row)
         except:
             print("An error ocurred")
 

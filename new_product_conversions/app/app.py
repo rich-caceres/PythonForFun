@@ -10,6 +10,11 @@ if __name__ == '__main__':
         try:
             sheet = ExcelSheet(input('Please enter excel sheet name:\n'), input('Enter Sku Identification to add to beginning of SKU:\n'), input('Enter starting row:\n'))
             workbook = openpyxl.load_workbook('../ExcelFiles/' + sheet.sheet_name)
+            multiSheet = input("Are there multiple sheets? y/n\n")
+            if(multiSheet == "Y"):
+                worksheet = workbook[input('What is the name of the worksheet to target?\n')]
+            else:
+                worksheet = workbook.active
             break
         except:
             answer = input("This workbook was not found! try again, Enter Q to quit the program, otherwise hit enter to continue.\n")
@@ -23,6 +28,7 @@ if __name__ == '__main__':
         colDiction['col{0}'.format(i)] = sheet.returnCols()
 
     for i in range(1,numOfCols):
-        print(colDiction['col{0}'.format(i)])
+        for row in range(sheet.starting_row, worksheet.max_row + 1):            
+            print(worksheet[colDiction['col{0}'.format(i)] + str(row)].value)
         
     print(sheet.sheet_name)
