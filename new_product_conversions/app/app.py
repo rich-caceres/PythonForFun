@@ -8,10 +8,11 @@ if __name__ == '__main__':
     
     while True:
         try:
-            sheet = ExcelSheet(input('Please enter excel sheet name:\n'), input('Enter Sku Identification to add to beginning of SKU'), input('Enter starting row'))
-            workbook = openpyxl.load_workbook(sheet.sheet_name)
+            sheet = ExcelSheet(input('Please enter excel sheet name:\n'), input('Enter Sku Identification to add to beginning of SKU:\n'), input('Enter starting row:\n'))
+            workbook = openpyxl.load_workbook('../ExcelFiles/' + sheet.sheet_name)
+            break
         except:
-            answer = input("This workbook was not found! try again, Enter Q to quit the program, otherwise hit enter to continue.")
+            answer = input("This workbook was not found! try again, Enter Q to quit the program, otherwise hit enter to continue.\n")
             if(answer == 'Q'):
                 sys.exit('You have quit the program!')
         

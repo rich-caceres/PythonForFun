@@ -2,7 +2,7 @@ class ExcelSheet:
     
     def __init__(self, sheet_name, manu_ident, starting_row):
         try:
-            self.sheet_name = sheet_name
+            self.sheet_name = sheet_name + '.xlsx'
             self.manu_ident = manu_ident
             self.starting_row = starting_row
         except:
