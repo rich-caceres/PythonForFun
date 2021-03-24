@@ -7,8 +7,6 @@ class ExcelSheet:
             print("An error ocurred")
 
     def totalCols(self):
-        isDigit = False
-
         while True:
             try:
                 return int(input("how many columns do you want to check?\n")) + 1
