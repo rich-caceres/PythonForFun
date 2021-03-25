@@ -31,7 +31,8 @@ if __name__ == '__main__':
         colDiction['col{0}'.format(i)] = sheet.returnCols()
 
     for i in range(1,numOfCols):
-        for row in range(sheet.starting_row, worksheet.max_row + 1):            
-            print(worksheet[colDiction['col{0}'.format(i)] + str(row)].value)
-        
+        for row in range(sheet.starting_row, worksheet.max_row + 1):
+            ws.cell(row = row, column = i).value = worksheet[colDiction['col{0}'.format(i)] + str(row)].value
+            print("process complete")
+            
     print(sheet.sheet_name)
