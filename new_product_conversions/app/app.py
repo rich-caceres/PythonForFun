@@ -35,6 +35,9 @@ if __name__ == '__main__':
         for row in range(sheet.starting_row, worksheet.max_row + 1):
             ws.cell(row = rowForWs, column = i).value = worksheet[colDiction['col{0}'.format(i)] + str(row)].value
             rowForWs += 1
-            print("process complete")
+
+    for i in range(1, ws.max_row + 1):
+        fixedSku = sheet.manu_ident + " " + str(ws.cell(row = i, column = 1).value)
+        print(fixedSku)
             
     print(sheet.sheet_name)
