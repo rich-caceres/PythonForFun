@@ -23,10 +23,14 @@ if __name__ == '__main__':
             answer = input("This workbook was not found! try again, Enter Q to quit the program, otherwise hit enter to continue.\n")
             if(answer == 'Q'):
                 sys.exit('You have quit the program!')
-        
+
+    #initializing dictionary for each column
     colDiction= {}
+    
     #following loop will return a dictionary of column letters
     numOfCols = sheet.totalCols()
+
+    #add column to discitonary per user input
     for i in range(1,numOfCols):
         colDiction['col{0}'.format(i)] = sheet.returnCols()
 
@@ -39,6 +43,6 @@ if __name__ == '__main__':
     for i in range(1, ws.max_row + 1):
         fixedSku = sheet.manu_ident + " " + str(ws.cell(row = i, column = 1).value)
         ws.cell(row=i, column = 1).value = fixedSku
-        print(ws.cell(row=i, column=1).value)
-            
+
+    wb.save('testSheet.xlsx')       
     print(sheet.sheet_name)
