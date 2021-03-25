@@ -5,6 +5,9 @@ from openpyxl import load_workbook, Workbook
 from Classes.ExcelSheetObject import ExcelSheet
 
 if __name__ == '__main__':
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
     
     while True:
         try:
