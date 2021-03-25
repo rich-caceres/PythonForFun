@@ -38,6 +38,7 @@ if __name__ == '__main__':
 
     for i in range(1, ws.max_row + 1):
         fixedSku = sheet.manu_ident + " " + str(ws.cell(row = i, column = 1).value)
-        print(fixedSku)
+        ws.cell(row=i, column = 1).value = fixedSku
+        print(ws.cell(row=i, column=1).value)
             
     print(sheet.sheet_name)
