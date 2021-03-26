@@ -1,3 +1,10 @@
+'''
+This script is a base class to use to create a excel sheet in the
+app file. Sheet name is used to create the file with openpyxl.
+manu_ident is used to add a specific sku identifier at the begginning of each SKU.
+Finally, starting row is the row at which openpyxl will begin looking on the sheet.
+'''
+
 class ExcelSheet:
     
     def __init__(self, sheet_name, manu_ident, starting_row):
