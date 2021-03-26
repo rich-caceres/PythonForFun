@@ -6,6 +6,7 @@ from Classes.ExcelSheetObject import ExcelSheet
 
 if __name__ == '__main__':
 
+    #creates a new workbook
     wb = openpyxl.Workbook()
     
     while True:
@@ -28,15 +29,21 @@ if __name__ == '__main__':
     for i in range(1,numOfCols):
         colDiction['col{0}'.format(i)] = sheet.returnCols()
 
+    #iterates through each sheet in the worbook
     for sheets in workbook.worksheets:
         worksheet = sheets
+        #creates new worksheet in the copy workbook
         ws = wb.create_sheet(worksheet.title)
+        #iterates through the columns
         for i in range(1,numOfCols):
+            #row for new worksheet
             rowForWs = 1
+            #iterates through the rows
             for row in range(sheet.starting_row, worksheet.max_row + 1):
                 ws.cell(row = rowForWs, column = i).value = worksheet[colDiction['col{0}'.format(i)] + str(row)].value
                 rowForWs += 1
-
+                
+    #iterates through the new worksheet and uses the identifier to change the sku in the workbook
     for ws in wb.worksheets:
         for i in range(1, ws.max_row + 1):
             fixedSku = sheet.manu_ident + " " + str(ws.cell(row = i, column = 1).value)
