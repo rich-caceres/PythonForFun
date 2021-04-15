@@ -31,14 +31,15 @@ if __name__ == '__main__':
 
     #iterates through each sheet in the worbook
     for sheets in workbook.worksheets:
-        #worksheet = sheets
         
         #creates new worksheet in the copy workbook
         ws = wb.create_sheet(sheets.title)
+        
         #iterates through the columns
         for i in range(1,numOfCols):
             #row for new worksheet
             rowForWs = 1
+            
             #iterates through the rows
             for row in range(sheet.starting_row, sheets.max_row + 1):
                 ws.cell(row = rowForWs, column = i).value = sheets[colDiction['col{0}'.format(i)] + str(row)].value
