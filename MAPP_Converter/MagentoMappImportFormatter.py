@@ -18,9 +18,11 @@ def CheckMapp(Worksheet1, Worksheet2):
         sku1 = re.sub(".*\\s", "", sku1)
         print(sku1)
 
+        #grabs the next sku to check from the other worksheet
         for row2 in range(int(startRowMapp), Worksheet2.max_row):
             sku2 = Worksheet2['B' + str(row2)].value
 
+            #checks both skus to start copying data over
             if(sku1 == sku2):
                 print('Matching Sku found, adding mapp and msrp')
                 mapp = Worksheet2[colWithMapp + str(row2)].value
@@ -33,6 +35,7 @@ def CheckMapp(Worksheet1, Worksheet2):
 
 if __name__ == "__main__":
 
+    
     Workbook1 = openpyxl.load_workbook('ExcelFile/'+ input('Enter name of excel file from magento:\n') + '.xlsx', keep_vba=False)
     Worksheet1 = Workbook1.active
 
