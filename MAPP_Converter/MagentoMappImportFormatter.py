@@ -12,6 +12,7 @@ def CheckMapp(Worksheet1, Worksheet2):
     startDate = input('Enter start date of MAPP:\n')
     endDate = input('Enter end date of MAPP:\n')
 
+    #starts grabbing each sku from the first worksheet
     for row1 in range(2, Worksheet1.max_row):
         sku1 = Worksheet1['A' + str(row1)].value
         sku1 = re.sub(".*\\s", "", sku1)
