@@ -1,0 +1,5 @@
+# Git ignores logs, executables, yaml files, and excel files
+*.yml
+*.log
+*.exe
+*.pyc
