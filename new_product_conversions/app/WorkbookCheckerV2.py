@@ -22,12 +22,17 @@ def workbookCheck():
         upsell_products = {}
 
     for row in range(excelSheetToCheck.starting_row, XcelSheetToCheck.max_row + 1):
-        XcelSheetToCheck['B' + str(row)].value
-        
-    """ outer loop through XcelSheetToCheck:
-            grab Sku1 here
-            inner loop through mageXcelSheet:
-                grab Sku2 here
+        columnLetter = input('Enter column that contains the Sku for each product')
+        Sku1 = XcelSheetToCheck['B' + str(row)].value
+
+        for row1 in range(magentoSheet.starting_row, mageXcelSheet.max_row + 1):
+            Sku2 = mageXcelSheet['A' + str(row)].value
+            Sku2 = re.sub(".*\\s", "", Sku2)
+            
+            if(Sku1 == Sku2):
+                print('Entered the if statement')
+                        
+    """ 
                 if Sku1 matches Sku2:
                     create dictionary of upsell_products
         loop through dictionary of upsell_products:        
