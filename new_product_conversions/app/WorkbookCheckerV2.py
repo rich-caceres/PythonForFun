@@ -21,6 +21,9 @@ def workbookCheck():
 
         upsell_products = {}
 
+    for row in range(excelSheetToCheck.starting_row, XcelSheetToCheck.max_row + 1):
+        XcelSheetToCheck['B' + str(row)].value
+        
     """ outer loop through XcelSheetToCheck:
             grab Sku1 here
             inner loop through mageXcelSheet:
