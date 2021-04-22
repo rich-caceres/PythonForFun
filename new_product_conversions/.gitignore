@@ -1,2 +1,3 @@
 # Gitignore all Excel files
 *.xlsx
+*.csv
