@@ -49,23 +49,30 @@ def workbookCheck():
                         if productsNotInCatalog is not None:
                             for keys in list(productsNotInCatalog):
                                 if(productsNotInCatalog[keys] == upsell_products[key]):
-                                    upsell_products.pop[key]
-                                    break
+                                    upsell_products.pop(key)
+                                    continue
+                                
                         if not bool(upsell_products):
                             break
                         for rowCheck in range(magentoSheet.starting_row, mageXcelSheet.max_row+1):
                             #print(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3]) #testing
                             if(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3] != str(excelSheetToCheck.manu_ident)):
                                 #print(upsell_products)#testing
+                                
                                 if(rowCheck == mageXcelSheet.max_row):
                                     print(f'Deleted {upsell_products[key]}')
                                     productsNotInCatalog[productNotInCatalogKey]= upsell_products[key]
                                     upsell_products.pop(key)
                                     productNotInCatalogKey += 1
+                                    break
+                                
                                 continue
-                            if(upsell_products[key] == mageXcelSheet['A' + str(rowCheck)].value):
-                                print('values equal if')#testing
-                                break
+                            try:
+                                if(upsell_products[key] == mageXcelSheet['A' + str(rowCheck)].value):
+                                    print('values equal if')#testing
+                                    break
+                            except KeyError:
+                                print(f'The key:{key} does not exist in the Dictionary.')
                                         
                     print(upsell_products)
                     for addKey in list(upsell_products):
