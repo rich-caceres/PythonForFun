@@ -51,7 +51,13 @@ def workbookCheck():
                                 if(productsNotInCatalog[keys] == upsell_products[key]):
                                     upsell_products.pop(key)
                                     continue
-                                
+                        try:
+                            if bool(upsell_products[key]):
+                                print('passed test')
+                        except KeyError:
+                            print(f'The key: {key} does not exist, returning to the top of the loop')
+                            continue
+                            
                         if not bool(upsell_products):
                             break
                         for rowCheck in range(magentoSheet.starting_row, mageXcelSheet.max_row+1):
@@ -73,6 +79,7 @@ def workbookCheck():
                                     break
                             except KeyError:
                                 print(f'The key:{key} does not exist in the Dictionary.')
+                                break
                                         
                     print(upsell_products)
                     for addKey in list(upsell_products):
