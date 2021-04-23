@@ -22,7 +22,8 @@ def workbookCheck():
             if(answer == 'Q'):
                 sys.exit('You have quit the program!')
 
-
+    productsNotInCatalog= {}
+    productNotInCatalogKey = 1
     for row1 in range(excelSheetToCheck.starting_row, XcelWorksheet.max_row + 1):
         if columnLetter is None:
             columnLetter= input('Please enter the column letter containing SKU on the sheet the contains the cross sell items:\n')
@@ -38,36 +39,51 @@ def workbookCheck():
                     
                     if XcelWorksheet.cell(row = row1, column = cols).value is not None:
                         upsell_products['{0}'.format(cols)] =excelSheetToCheck.manu_ident + " " + XcelWorksheet.cell(row=row1, column=cols).value
-
+                valueString = None
+                position = None
                 if bool(upsell_products):
                     #print('in second if for bool products')#testing
                     #print(upsell_products)#testing
                     for key in list(upsell_products):
                         #print(upsell_products)#testing
+                        if productsNotInCatalog is not None:
+                            for keys in list(productsNotInCatalog):
+                                if(productsNotInCatalog[keys] == upsell_products[key]):
+                                    upsell_products.pop[key]
+                                    break
+                        if not bool(upsell_products):
+                            break
                         for rowCheck in range(magentoSheet.starting_row, mageXcelSheet.max_row+1):
                             #print(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3]) #testing
                             if(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3] != str(excelSheetToCheck.manu_ident)):
                                 #print(upsell_products)#testing
                                 if(rowCheck == mageXcelSheet.max_row):
                                     print(f'Deleted {upsell_products[key]}')
+                                    productsNotInCatalog[productNotInCatalogKey]= upsell_products[key]
                                     upsell_products.pop(key)
+                                    productNotInCatalogKey += 1
                                 continue
                             if(upsell_products[key] == mageXcelSheet['A' + str(rowCheck)].value):
                                 print('values equal if')#testing
                                 break
-                            
-                                
+                                        
                     print(upsell_products)
+                    for addKey in list(upsell_products):
+                        if (valueString == None and position == None):
+                            valueString = upsell_products[addKey]
+                            position = '0'
+                        else:
+                            valueString = valueString+','+upsell_products[addKey]
+                            position = position + ',' + '0'
+                print(f'{valueString} \n {position}')
+                if (valueString is not None and position is not None):
+                    mageXcelSheet['BS' + str(row2)].value = valueString
+                    mageXcelSheet['BT' + str(row2)].value = position
                 #print(upsell_products)#testing
                 break
                         
-    """ 
-        loop through dictionary of upsell_products:        
-            if dictionary of upsell products not in mageXcelSheet:
-                delete the sku from dictionary
-            else:
-                continue
-    """
+    mageXcelWorkbook.save('newMageWorkbook.xlsx')
+    
 if __name__ == '__main__':
 
     workbookCheck()
