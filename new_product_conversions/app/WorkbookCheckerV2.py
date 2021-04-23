@@ -32,11 +32,33 @@ def workbookCheck():
             Sku2 = str(mageXcelSheet['A' + str(row2)].value)
             Sku2 = re.sub(".*\\s", "", Sku2)
             if(Sku1 == Sku2):
-                print(f'Entered if Statement {Sku1} == {Sku2}')
+                print(f'Entered if Statement {Sku1} == {Sku2}')#testing
+                
                 for cols in range(5, XcelWorksheet.max_column+1):
+                    
                     if XcelWorksheet.cell(row = row1, column = cols).value is not None:
                         upsell_products['{0}'.format(cols)] =excelSheetToCheck.manu_ident + " " + XcelWorksheet.cell(row=row1, column=cols).value
-                print(upsell_products)
+
+                if bool(upsell_products):
+                    #print('in second if for bool products')
+                    #print(upsell_products)
+                    for key in list(upsell_products):
+                        print(upsell_products)
+                        for rowCheck in range(magentoSheet.starting_row, mageXcelSheet.max_row+1):
+                            #print(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3]) #testing
+                            if(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3] != str(excelSheetToCheck.manu_ident)):
+                                #print(upsell_products)#testing
+                                if(rowCheck == mageXcelSheet.max_row):
+                                    print(f'Deleted {upsell_products[key]}')
+                                    upsell_products.pop(key)
+                                continue
+                            if(upsell_products[key] == mageXcelSheet['A' + str(rowCheck)].value):
+                                print('values equal if')#testing
+                                break
+                            
+                                
+                    print(upsell_products)
+                #print(upsell_products)#testing
                 break
                         
     """ 
