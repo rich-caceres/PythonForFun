@@ -48,14 +48,18 @@ def workbookCheck():
                         #print(upsell_products)#testing
                         if productsNotInCatalog is not None:
                             for keys in list(productsNotInCatalog):
-                                if(productsNotInCatalog[keys] == upsell_products[key]):
-                                    upsell_products.pop(key)
-                                    continue
+                                try:
+                                    if(productsNotInCatalog[keys] == upsell_products[key]):
+                                        upsell_products.pop(key)
+                                        continue
+                                except KeyError:
+                                    print(f'The Key: {key} does not exist, returning to top of loop.')
+                                    break
                         try:
                             if bool(upsell_products[key]):
                                 print('passed test')
                         except KeyError:
-                            print(f'The key: {key} does not exist, returning to the top of the loop')
+                            print(f'The key: {key} does not exist, returning to the top of the loop.')
                             continue
                             
                         if not bool(upsell_products):
