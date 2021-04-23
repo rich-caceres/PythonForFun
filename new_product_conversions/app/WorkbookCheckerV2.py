@@ -40,10 +40,10 @@ def workbookCheck():
                         upsell_products['{0}'.format(cols)] =excelSheetToCheck.manu_ident + " " + XcelWorksheet.cell(row=row1, column=cols).value
 
                 if bool(upsell_products):
-                    #print('in second if for bool products')
-                    #print(upsell_products)
+                    #print('in second if for bool products')#testing
+                    #print(upsell_products)#testing
                     for key in list(upsell_products):
-                        print(upsell_products)
+                        #print(upsell_products)#testing
                         for rowCheck in range(magentoSheet.starting_row, mageXcelSheet.max_row+1):
                             #print(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3]) #testing
                             if(str(mageXcelSheet['A' + str(rowCheck)].value)[0:3] != str(excelSheetToCheck.manu_ident)):
