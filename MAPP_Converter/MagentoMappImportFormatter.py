@@ -3,7 +3,7 @@ import re
 from openpyxl import load_workbook
 
 
-def CheckMapp():
+def CheckMapp(numOfSheets):
 
     try:
         Workbook1 = openpyxl.load_workbook('ExcelFile/'+ input('Enter name of excel file from magento:\n') + '.xlsx', keep_vba=False)
@@ -40,13 +40,16 @@ def CheckMapp():
                 Worksheet1['F' + str(row1)].value = mapp
                 Worksheet1['G' + str(row1)].value = startDate
                 Worksheet1['H' + str(row1)].value = endDate
-    Workbook1.save('import.xlsx')
+                
+    Workbook1.save(f'import{numOfSheets}.xlsx')
 
 if __name__ == "__main__":
 
     answer = None
+    numOfSheets = 1
     while True:
-        answer = input("Would you like to convert a MAPP for import to Magento?")
-        if (answer == 'n'): break
-        CheckMapp()
+        answer = input("Would you like to convert a MAPP for import to Magento? y/n\n")
+        if (answer.lower() == 'n'): break
+        CheckMapp(numOfSheets)
+        numOfSheet += 1
 
