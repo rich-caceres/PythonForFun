@@ -48,8 +48,12 @@ if __name__ == "__main__":
     answer = None
     numOfSheets = 1
     while True:
-        answer = input("Would you like to convert a MAPP for import to Magento? y/n\n")
-        if (answer.lower() == 'n'): break
-        CheckMapp(numOfSheets)
-        numOfSheet += 1
+
+        try:
+            answer = input("Would you like to convert a MAPP for import to Magento? y/n\n")
+            if (answer.lower() == 'n'): break
+            CheckMapp(numOfSheets)
+            numOfSheet += 1
+        except:
+            print("An error ocurred, try again.")
 
