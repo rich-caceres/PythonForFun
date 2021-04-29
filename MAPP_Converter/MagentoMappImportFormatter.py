@@ -42,7 +42,6 @@ if __name__ == "__main__":
     Workbook2 = openpyxl.load_workbook('ExcelFile/' + input('Enter name of excel file with MAPP pricing:\n')+ '.xlsx', keep_vba = False)
     Worksheet2 = Workbook2[input('Enter the name of the worksheet with MAPP pricing:\n')]
 
-
     Worksheet1 = CheckMapp(Worksheet1, Worksheet2)
 
     Workbook1.save('import.xlsx')
