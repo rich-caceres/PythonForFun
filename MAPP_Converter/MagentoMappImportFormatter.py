@@ -40,7 +40,7 @@ def CheckMapp():
                 Worksheet1['F' + str(row1)].value = mapp
                 Worksheet1['G' + str(row1)].value = startDate
                 Worksheet1['H' + str(row1)].value = endDate
-    return Worksheet1
+    Workbook1.save('import.xlsx')
 
 if __name__ == "__main__":
 
@@ -48,6 +48,5 @@ if __name__ == "__main__":
     while True:
         answer = input("Would you like to convert a MAPP for import to Magento?")
         if (answer == 'n'): break
-        Worksheet1 = CheckMapp()
+        CheckMapp()
 
-    Workbook1.save('import.xlsx')
