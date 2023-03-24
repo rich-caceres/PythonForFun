@@ -1,9 +1,6 @@
 from win32api import GetSystemMetrics
 import win32gui, time, tkinter
 
-root = tkinter.Tk()
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
 
 width = GetSystemMetrics(0)
 height = GetSystemMetrics(1)
